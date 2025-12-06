@@ -60,8 +60,12 @@ A simple web-based **Sorting Visualizer** that demonstrates different sorting al
 - Add **color legend** for better understanding
 
 ## Demo
+###Generate Array
 
-![Sorting Visualizer Demo](demo.gif) *(Optional: add a GIF of your visualizer in action)*
+
+<img width="1905" height="472" alt="image" src="https://github.com/user-attachments/assets/68356ffc-4687-4d18-9fc7-82afcba42ddb" />
+
+
 
 ## License
 
