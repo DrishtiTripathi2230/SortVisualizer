@@ -60,11 +60,21 @@ A simple web-based **Sorting Visualizer** that demonstrates different sorting al
 - Add **color legend** for better understanding
 
 ## Demo
-###Generate Array
+Generate Array
 
 
 <img width="1905" height="472" alt="image" src="https://github.com/user-attachments/assets/68356ffc-4687-4d18-9fc7-82afcba42ddb" />
 
+working(sorting):
+
+
+<img width="1903" height="538" alt="image" src="https://github.com/user-attachments/assets/362dc209-078b-41f1-b4fb-dd07f616851a" />
+
+
+after sorting:
+
+
+<img width="1648" height="504" alt="image" src="https://github.com/user-attachments/assets/245f0663-ac46-468b-891a-049ed402c3fd" />
 
 
 ## License
