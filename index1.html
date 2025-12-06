@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorting Visualizer</title>
+</head>
+<body>
+    <div id="container"></div>
+    <button onclick="generateArray()">Generate Array</button>
+    <button onclick="bubbleSort()">Bubble Sort</button>
+    <button onclick="insertionSort()">Insertion Sort</button>
+    <button onclick="selectionSort()">Selection Sort</button>
+
+    <script>
+    function generateArray() {
+        let container = document.getElementById("container");
+        container.innerHTML = ""; // clear previous bars
+
+        for (let i = 0; i < 48; i++) {
+            let value = Math.floor(Math.random() * 100) + 1;
+
+            let bar = document.createElement("div");
+            bar.style.height = value * 2 + "px";
+            bar.style.width = "20px";
+            bar.style.margin = "1px";
+            bar.style.backgroundColor = "skyblue";
+            bar.style.display = "inline-block";
+
+            container.appendChild(bar);
+        }
+    }
+
+    async function bubbleSort() {
+        let bars = document.querySelectorAll("#container div");
+
+        for (let i = 0; i < bars.length - 1; i++) {
+            for (let j = 0; j < bars.length - i - 1; j++) {
+                bars[j].style.background = "red";
+                bars[j+1].style.background = "red";
+
+                let height1 = parseInt(bars[j].style.height);
+                let height2 = parseInt(bars[j+1].style.height);
+
+                await new Promise(resolve => setTimeout(resolve, 50));
+
+                if(height1 > height2){
+                    bars[j].style.height = height2 + "px";
+                    bars[j+1].style.height = height1 + "px";
+                }
+
+                bars[j].style.background = "skyblue";
+                bars[j+1].style.background = "skyblue";
+            }
+        }
+    }
+
+    async function insertionSort() {
+        let bars = document.querySelectorAll("#container div");
+
+        for (let i = 1; i < bars.length; i++) {
+            let j = i;
+            let currentHeight = parseInt(bars[i].style.height);
+            bars[i].style.background = "orange";
+
+            while (j > 0 && parseInt(bars[j-1].style.height) > currentHeight) {
+                bars[j].style.height = bars[j-1].style.height;
+                bars[j].style.background = "red";
+                j--;
+
+                await new Promise(resolve => setTimeout(resolve, 50));
+                for (let k = 0; k < bars.length; k++) {
+                    if(k !== j) bars[k].style.background = "skyblue";
+                }
+            }
+            bars[j].style.height = currentHeight + "px";
+            bars[j].style.background = "skyblue";
+        }
+    }
+
+    async function selectionSort() {
+        let bars = document.querySelectorAll("#container div");
+
+        for (let i = 0; i < bars.length - 1; i++) {
+            let minIndex = i;
+            bars[minIndex].style.background = "orange";
+
+            for (let j = i + 1; j < bars.length; j++) {
+                bars[j].style.background = "red";
+                await new Promise(resolve => setTimeout(resolve, 50));
+
+                if (parseInt(bars[j].style.height) < parseInt(bars[minIndex].style.height)) {
+                    bars[minIndex].style.background = "skyblue";
+                    minIndex = j;
+                    bars[minIndex].style.background = "orange";
+                } else {
+                    bars[j].style.background = "skyblue";
+                }
+            }
+
+            if(minIndex !== i){
+                let temp = bars[i].style.height;
+                bars[i].style.height = bars[minIndex].style.height;
+                bars[minIndex].style.height = temp;
+            }
+            bars[i].style.background = "skyblue";
+        }
+    }
+    </script>
+</body>
+</html>
